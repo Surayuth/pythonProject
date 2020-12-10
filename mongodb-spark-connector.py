@@ -24,7 +24,7 @@ my_spark = SparkSession\
 # read data from mongodb
 df = my_spark.read.format('com.mongodb.spark.sql.DefaultSource').load()
 df = df.withColumn('id' , monotonically_increasing_id())
-df = df.select('id', 'timestamp_ms', 'source')
+df = df.select('id', 'lang', 'timestamp_ms', 'source')
 
 #convert timestamp
 df2 = df.withColumn('time', F.to_utc_timestamp(F.from_unixtime(F.col("timestamp_ms")/1000,'yyyy-MM-dd HH:mm:ss'),'UTC'))
@@ -38,7 +38,7 @@ df3 = df2.withColumn('tool', when(col('source').contains('tweetdeck'),'Tweetdeck
 		     		 .when(col("source").contains("tweetbot"),"Tweetbot")
 				 .when(col("source").contains("iPad"),"iPad")
                                  .otherwise("Unknown"))
-df4 = df3.select('time', 'timestamp_ms',  'tool')
+df4 = df3.select('time', 'timestamp_ms', 'lang',  'tool')
 df4.show()
 
 #export to csv
