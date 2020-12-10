@@ -28,7 +28,7 @@ df2 = df.select('timestamp_ms', 'source')
 df2 = df2.withColumn("time", F.to_utc_timestamp(F.from_unixtime(F.col("timestamp_ms")/1000,'yyyy-MM-dd HH:mm:ss'),'UTC'))
 
 #select tool from source
-df2 = df2.withColumn("tool", when(col("source").contains("iphone"),"iphone")
+df2 = df2.withColumn("tool", when(col("source").contains("tweetdeck"),"Tweetdeck")
                                  .when(col("source").contains("mobile"),"mobile")
 				 .when(col("source").contains("android"),"android")
 				 .when(col("source").contains("iPhone"),"iPhone")
