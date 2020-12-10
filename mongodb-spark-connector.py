@@ -3,6 +3,7 @@ from pyspark.sql import Window as window
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, when
 from pyspark.sql import functions as F
+from pyspark.sql.functions import monotonically_increasing_id
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -22,24 +23,26 @@ my_spark = SparkSession\
 
 # read data from mongodb
 df = my_spark.read.format('com.mongodb.spark.sql.DefaultSource').load()
-df2 = df.select('timestamp_ms', 'source')
+df = df.withColumn('id' , monotonically_increasing_id())
+df = df.select('id', 'timestamp_ms', 'source')
 
 #convert timestamp
-df2 = df2.withColumn("time", F.to_utc_timestamp(F.from_unixtime(F.col("timestamp_ms")/1000,'yyyy-MM-dd HH:mm:ss'),'UTC'))
+df2 = df.withColumn('time', F.to_utc_timestamp(F.from_unixtime(F.col("timestamp_ms")/1000,'yyyy-MM-dd HH:mm:ss'),'UTC'))
 
 #select tool from source
-df2 = df2.withColumn("tool", when(col("source").contains("tweetdeck"),"Tweetdeck")
+df3 = df2.withColumn('tool', when(col('source').contains('tweetdeck'),'Tweetdeck')
                                  .when(col("source").contains("mobile"),"mobile")
 				 .when(col("source").contains("android"),"android")
 				 .when(col("source").contains("iPhone"),"iPhone")
 				 .when(col("source").contains("Android"),"android")
+		     		 .when(col("source").contains("tweetbot"),"Tweetbot")
 				 .when(col("source").contains("iPad"),"iPad")
                                  .otherwise("Unknown"))
-df3 = df2.select('time', 'timestamp_ms',  'tool')
-df3.show()
+df4 = df3.select('time', 'timestamp_ms',  'tool')
+df4.show()
 
 #export to csv
-df3.toPandas().to_csv('data.csv')
+df4.toPandas().to_csv('data.csv')
 
 
 
