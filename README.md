@@ -1,2 +1,2 @@
 # pythonProject
-testtest
+for storing code and script
