@@ -13,7 +13,7 @@ output_uri = "mongodb://34.80.90.86/trendtrue_db.twitter_search"
 
 my_spark = SparkSession\
     .builder\
-    .appName("MyApp")\
+    .appName("SpaceBar")\
     .config("spark.mongodb.input.uri", input_uri)\
     .config("spark.mongodb.output.uri", output_uri)\
     .config('spark.jars.packages','org.mongodb.spark:mongo-spark-connector_2.12:2.4.2')\
