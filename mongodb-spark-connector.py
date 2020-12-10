@@ -8,8 +8,8 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 
 # load mongo data
-input_uri = "mongodb://34.80.90.86/trendtrue_db.twitter_search"
-output_uri = "mongodb://34.80.90.86/trendtrue_db.twitter_search"
+input_uri = "mongodb://34.80.90.86/db.twitter_search"
+output_uri = "mongodb://34.80.90.86/db.twitter_search"
 
 # create spark session
 my_spark = SparkSession\
