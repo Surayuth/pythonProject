@@ -14,7 +14,7 @@ MONGO_HOST = 'mongodb://34.80.90.86/db'  # your ext-ip address, localhost
 
 # Your words that you want to collect
 
-WORDS = ['cyberpunk','covid']
+WORDS = ['']
 
 # Twitter Application Management
 # https://apps.twitter.com/
