@@ -43,7 +43,8 @@ df4.show()
 
 #export to csv
 df4.toPandas().to_csv('data.csv')
-
+#export to orc
+df4.write.format("orc").save("/path/to/hive/data_orc")
 
 
 
