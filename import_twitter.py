@@ -8,14 +8,14 @@ from pymongo import MongoClient
 
 # Define mongo db host
 
-MONGO_HOST = 'mongodb://34.80.90.86/db'  # your ext-ip address, localhost
+MONGO_HOST = 'mongodb://35.234.63.96/db'  # your ext-ip address, localhost
 
 # assuming you have mongoDB installed locally
 # and a database called 'twitterbnk48'
 
 # Your words that you want to collect
 
-WORDS = [' ']
+WORDS = ['cyberpunk',' ']
 
 # Twitter Application Management
 # https://apps.twitter.com/
