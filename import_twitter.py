@@ -15,7 +15,7 @@ MONGO_HOST = 'mongodb://35.234.63.96/db'  # your ext-ip address, localhost
 
 # Your words that you want to collect
 
-WORDS = ['cyberpunk',' ']
+WORDS = ['Cyberpunk2077','TheGameAward','games','gamers','gaming','streamer','PS5','PlayStation5','AmongUs','minecraft',' ']
 
 # Twitter Application Management
 # https://apps.twitter.com/
