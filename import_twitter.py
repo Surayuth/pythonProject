@@ -1,3 +1,4 @@
+# source: https://pythondata.com/collecting-storing-tweets-with-python-and-mongodb/
 # import libraries
 
 from __future__ import print_function
@@ -14,7 +15,7 @@ MONGO_HOST = 'mongodb://34.80.90.86/db'  # your ext-ip address, localhost
 
 # Your words that you want to collect
 
-WORDS = ['']
+WORDS = [' ']
 
 # Twitter Application Management
 # https://apps.twitter.com/
